@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Productos{
+    char nombre[20];
+    char sku[10];
+    float precio;
+    int inventario;
+    int tamaño;
+};
+struct Productos ingresaProductos();
+void imprimeProductos(struct Productos productoImpreso);
+
+int main(){
+    struct Productos cocas[3];
+    int opcion = 1;
+    int i;
+    while (opcion != 0){
+        printf("selecciona una opcion\n1.- agregar producto\n2.- ver Producto\n");
+        scanf ("%d", &opcion);
+        fflush(stdin);
+        switch (opcion) {
+            case 1:
+                printf("Selecciona le producto que quieres ingresar\n");
+                scanf("%d", &i);
+                cocas[i] = ingresaProductos();
+                break;
+            case 2:
+                printf("Selecciona le producto que quieres ver\n");
+                scanf("%d", &i);
+                imprimeProductos(cocas[i]);
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+}
+
+struct Productos ingresaProductos(){
+    struct Productos nuevaCoca;
+    printf("Ingresa el nombre de la coca\n");
+    scanf("%s", nuevaCoca.nombre);
+    fflush(stdin);
+    printf("Ingresa el sku de la coca\n");
+    scanf("%s", nuevaCoca.sku);
+    fflush(stdin);
+    printf("Ingresa el precio de la coca\n");
+    scanf("%f", &nuevaCoca.precio);
+    fflush(stdin);
+    printf("Ingresa el inventario de la coca\n");
+    scanf("%d", &nuevaCoca.inventario);
+    fflush(stdin);
+    printf("Ingresa el tamaño de la coca\n");
+    scanf("%d", &nuevaCoca.tamaño);
+    fflush(stdin);
+    return nuevaCoca;
+}
+
+void imprimeProductos(struct Productos productoImpreso){
+    printf("El nombre es: %s\n", productoImpreso.nombre);
+    printf("El sku es: %s\n", productoImpreso.sku);
+    printf("El precio es: %.2f\n", productoImpreso.precio);
+    printf("El inventario es: %d\n", productoImpreso.inventario);
+    printf("El tamaño es: %d\n", productoImpreso.tamaño);
+    return;
+}
