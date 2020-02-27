@@ -1,0 +1,139 @@
+#include <stdio.h>
+#include <stdlib.h>
+//PROTOTIPO DE LAS FUNCIONES
+	void MENU();
+	void menuTACOS();
+	void menuBEBIDAS();
+	void menuPOSTRES();
+	void menuAGREGAR();
+	void SALIR();
+//-------------------------------------------
+//PROTOTIPO struct
+
+
+//-------------------------------------------
+int cent, op; 
+//MAIN PRINCIPAL DEL PROGRAMA
+
+int main(){
+    MENU();
+    return 0;
+}
+
+//DEFINICION DE FUNCIONES
+		//FUNCION MENU
+		void MENU(){			//ELABORADO: GIOVANNI CHAVES FLORES	
+	     	 do{
+	      		printf("\n--------------------Taquería El Primo-------------------------\n");
+	            printf("Bienvenido al menu de operaciones de polinomios, elige una opcion\n");
+				printf("\t(1) Tacos.\n");
+				printf("\t(2) Bebidas.\n");
+				printf("\t(3) Postres.\n");
+				printf("\t(4) Salir.\n");
+	            printf("------------------------------------------------------------\n");
+				
+				printf("\n\nOpcion: ");
+	            scanf("%d",&op);
+	
+	            switch(op)
+				{
+	               case 1:
+	                  	printf("------------------------------------------------------------\n");
+		  				printf("Tacos.");   
+						printf("\n------------------------------------------------------------\n");
+						menuTACOS();
+	               return menuAGREGAR();
+	               case 2:
+	                    printf("------------------------------------------------------------\n");
+		  				printf("Bebidas.");   
+						printf("\n------------------------------------------------------------\n");   
+						menuBEBIDAS();
+	               return menuAGREGAR();
+	               case 3:
+	                  	printf("------------------------------------------------------------\n");
+		  				printf("Postres.");   
+						printf("\n------------------------------------------------------------\n");  
+						menuPOSTRES();
+	                return menuAGREGAR();
+					case 4:
+	    	            SALIR();
+		            break;  
+		            return 0;
+	                default:
+	                  printf("\n OPCIÓN INEXISTENTE, INTRODUCE UNA OPCION VALIDA\n");
+	                break;
+	            }
+	        }
+	 			while(op!=4);
+		}
+		//FUNCION TACOS	
+		void menuTACOS(){   			 //ELABORADO: GIOVANNI CHAVES FLORES	
+	        printf("\nEstos son los tacos que tenemos disponibles por orden\n");
+	        printf("\t(1) Pastor................15.00.\n");
+			printf("\t(2) Suadero................15.00.\n");
+			printf("\t(3) Alambre................20.50.\n");
+			return 0;
+        }
+		//FUNCION Bebidas
+		void menuBEBIDAS(){   			 //ELABORADO: GIOVANNI CHAVES FLORES	
+	        printf("\nEstos son los tacos que tenemos disponibles por orden\n");
+	        printf("\t(1) Horchata................15.00.\n");
+			printf("\t(2) Refresco................15.00.\n");
+			printf("\t(3) Cerveza................24.50.\n");
+			return 0;
+        }
+		//FUNCION Postres
+			void menuPOSTRES(){   			 //ELABORADO: GIOVANNI CHAVES FLORES	
+	        printf("\nEstos son los tacos que tenemos disponibles por orden\n");
+	        printf("\t(1) Pay de limon................15.00.\n");
+			printf("\t(2) Flan napolitano................15.00.\n");
+			printf("\t(3) Helado................20.50.\n");
+			return 0;
+        }
+		//FUNCION SALIR
+		void SALIR(){
+    	printf("------------------------------------------------------------\n");
+		printf("LA EJECUCION HA LLEGADO A SU FINAL\n");   
+		printf("------------------------------------------------------------\n");
+		return 0;
+		}
+		//FUNCION menuAGREGAR
+		void menuAGREGAR(){
+		   do{
+	            printf("Desea agregar algo a su orden????\n");
+				printf("\t(1) Si.\n");
+				printf("\t(2) No.\n");
+				printf("\t(3) Tal vez.\n");
+	            printf("------------------------------------------------------------\n");
+				
+				printf("\n\nOpcion: ");
+	            scanf("%d",&op);
+	
+	            switch(op)
+				{
+	               case 1:
+	                  	printf("------------------------------------------------------------\n");
+		  				printf("Gracias, siga ordenando");   
+						printf("\n------------------------------------------------------------\n");
+						MENU();
+	               return 0;
+	               case 2:
+	                    printf("------------------------------------------------------------\n");
+		  				printf("Fue un placer atenderle");   
+						printf("\n------------------------------------------------------------\n");   
+						SALIR();
+	               return 0;
+	               case 3:
+	                  	printf("------------------------------------------------------------\n");
+		  				printf("Será movido al menu de inicio");   
+						printf("\n------------------------------------------------------------\n");  
+						MENU();
+	                return 0;
+	                default:
+	                  printf("\n OPCIÓN INEXISTENTE, INTRODUCE UNA OPCION VALIDA\n");
+	                break;
+	            }
+	        }
+	 			while(op!=3);
+		}
+		
