@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Productos{
+    char nombre[20];
+    char salsa[10];
+    float precio;
+    int orden;
+    int tamaño;
+};
+struct Productos ingresaProductos();
+void imprimeProductos(struct Productos productoImpreso);
+
+int main(){
+    struct Productos [3];
+    int opcion = 1;
+    int i;
+    while (opcion != 0){
+        printf("selecciona una opcion\n1.- agregar Tacos\n2.- ver Tacos\n");
+        scanf ("%d", &opcion);
+        fflush(stdin);
+        switch (opcion) {
+            case 1:
+                printf("Selecciona le taco que quieres ingresar\n");
+                scanf("%d", &i);
+                tacos[i] = ingresaProductos();
+                break;
+            case 2:
+                printf("Selecciona le taco que quieres ver\n");
+                scanf("%d", &i);
+                imprimeProductos(tacos[i]);
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+}
+
+struct Productos ingresaProductos(){
+    struct Productos nuevoTaco;
+    printf("Ingresa el nombre del taco\n");
+    scanf("%s", nuevoTaco.nombre);
+    fflush(stdin);
+    printf("Ingresa que salsa quieres en el taco\n");
+    scanf("%s", nuevoTaco.salsa);
+    fflush(stdin);
+    printf("Ingresa el precio del taco\n");
+    scanf("%f", &nuevoTaco.precio);
+    fflush(stdin);
+    printf("Ingresa el menu del taco\n");
+    scanf("%d", &nuevoTaco.menu);
+    fflush(stdin);
+    printf("Ingresa el tamaño de la coca\n");
+    scanf("%d", &nuevoTaco.tamaño);
+    fflush(stdin);
+    return nuevoTaco;
+}
+
+void imprimeProductos(struct Productos productoImpreso){
+    printf("El nombre es: %s\n", productoImpreso.nombre);
+    printf("La salsa que quieres es: %s\n", productoImpreso.salsa);
+    printf("El precio es: %.2f\n", productoImpreso.precio);
+    printf("El menu es: %d\n", productoImpreso.menu);
+    printf("El tamaño es: %d\n", productoImpreso.tamaño);
+    return;
+}
