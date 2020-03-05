@@ -15,7 +15,19 @@ int main(){
     struct Productos [3];
     int opcion = 1;
     int i;
-    while (opcion != 0){
+    char *cadena;
+int tam;
+tam = (strlen("Tacos")+ 1) * sizeof (char); cadena = (char *) malloc (tam);
+strcpy (cadena,"Tacos") ;
+puts (cadena) ;
+//Ampliación del bloque de memoria
+tam += (strlen("Con queso\n")+ 1)* sizeof (char); cadena = (char * ) realloc (cadena, tam);
+strcat (cadena," Con queso\n");
+puts(cadena);
+//Liberación de memoria
+free (cadena) ;
+   
+ while (opcion != 0){
         printf("selecciona una opcion\n1.- agregar Tacos\n2.- ver Tacos\n");
         scanf ("%d", &opcion);
         fflush(stdin);
