@@ -1,0 +1,103 @@
+/*
+ Este programa muestra el uso de calloc(), malloc() y free()
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#define Tipo_base int
+/*
+ Constantes
+*/
+#define NUM_ELEMENTOS 10
+#define NUM_CAPAS 2
+#define NUM_FILAS 3
+#define NUM_COLS 4
+/*
+ Primero declaramos un puntero de Tipo_base,
+ que servirá como puntero de lista porque
+ p[i] equivale a *(p+i)
+*/
+Tipo_base *p1 ;
+/*
+ Ahora declaramos un puntero de fila,
+ que servirá para recorrer una tabla
+ empleándolo con dos índices.
+*/
+Tipo_base (*p2)[NUM_COLS];
+/*
+ Por último declaramos un puntero de tabla,
+ que servirá para recorrer tarugos
+ empleando hasta tres índices.
+*/
+Tipo_base (*p3)[NUM_FILAS][NUM_COLS];
+ 
+int main(void)
+{
+ int i, j, k;
+ printf ("Asignación dinámica de memoria\n\n");
+/*
+ Vamos a reservar espacio para una lista formada por
+ NUM_ELEMENTOS variables de Tipo_base.
+*/
+  p1 = malloc(NUM_ELEMENTOS*sizeof(Tipo_base)); 
+/* Evidentemente, esto sería equivalente a poner
+ p1 = calloc(NUM_ELEMENTOS, sizeof(Tipo_base));
+*/
+/*
+ Vamos a reservar espacio para una tabla formada por
+ NUM_FILAS*NUM_COLS variables de Tipo_base.
+*/
+  p2 = malloc(NUM_FILAS*NUM_COLS*sizeof(Tipo_base)); 
+/* Evidentemente, esto sería equivalente a poner
+ p2 = calloc(NUM_FILAS*NUM_COLS, sizeof(Tipo_base));
+*/
+ p3 = malloc(NUM_CAPAS*NUM_FILAS*NUM_COLS*sizeof(Tipo_base)); 
+/* Evidentemente, esto sería equivalente a poner
+ p3 = calloc(NUM_CAPAS*NUM_FILAS*NUM_COLS, sizeof(Tipo_base));
+*/
+/*
+ Ahora damos valores a la lista monodimensional.
+*/
+ for(i=0;i<NUM_ELEMENTOS;i++) p1[i] = i;
+/*
+ Y a la tabla (con dos índices).
+*/
+ for(i=0;i<NUM_FILAS;i++)
+  for(j=0;j<NUM_COLS;j++)
+   p2[i][j] = 10*i+j;
+/*
+ Y al tarugo (con tres índices).
+*/
+ for(i=0;i<NUM_CAPAS;i++)
+  for(j=0;j<NUM_FILAS;j++)
+   for(k=0;k<NUM_COLS;k++)
+    p3[i][j][k] = 100*i+10*j+k;
+
+/*
+ Comprobemos que realmente se han almacenado esos valores.
+*/
+ printf("p1[9] = %d\n",p1[9]);
+ printf("p2[2][3] = %d\n",p2[2][3]);
+ printf("p3[1][2][3] = %d\n", p3[1][2][3]);
+
+/*
+ Por último, liberamos la memoria reservada.
+*/
+ free(p1);
+ free(p2);
+ free(p3);
+ printf ("\nTerminación normal del programa\n");
+ 
+ return 0;
+}
+ 
+/*
+ Resultado
+ Asignación dinámica de memoria
+ 
+ p1[9] = 9
+ p2[2][3] = 23
+ p3[1][2][3] = 123
+ 
+ Terminación normal del programa
+*/
