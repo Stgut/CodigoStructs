@@ -1,0 +1,157 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+// Prototipo funciones//
+
+	void SALIR();
+	void MENU();
+
+//////////////////////////
+
+
+struct NodoPila{
+	char dato;
+	struct NodoPila *ptrSiguiente;
+};
+
+void push(struct NodoPila **ptrS);
+void pop(struct NodoPila **ptrS);
+void mostrarPila(struct NodoPila *ptrS);
+
+
+int cent, op;
+int main(){
+	MENU();
+	return 0;
+}
+
+
+void push (struct NodoPila **ptrS){
+    struct NodoPila *ptrNuevo;
+    ptrNuevo = (struct NodoPila *)malloc(sizeof(struct NodoPila));
+    if(ptrNuevo != NULL){
+        printf("Escribe la letra\n");
+        scanf("%c", &ptrNuevo->dato);
+        fflush(stdin);
+        ptrNuevo->ptrSiguiente = *ptrS;
+        *ptrS = ptrNuevo;
+    }else{
+        printf("no se creo el nuevo dato\n");
+    }
+}
+
+void pop(struct NodoPila **ptrS){
+    struct NodoPila *prtTemp;
+    char valorEliminado;
+    prtTemp = *ptrS;
+    valorEliminado = (*ptrS)->dato;
+    *ptrS = (*ptrS)->ptrSiguiente;
+    free(prtTemp);
+    
+}
+
+void mostrarPila(struct NodoPila *ptrS){
+    
+    struct NodoPila *ptrActual;
+    
+    if (ptrS == NULL){
+        printf ("pila Vacia\n");
+        return;
+    }
+    ptrActual = ptrS;
+    printf("La Pila Actual es:\n");
+    while (ptrActual != NULL){
+        printf("%c =-=> ", ptrActual->dato);
+        ptrActual = ptrActual->ptrSiguiente;
+    }
+    printf("NULL\n");
+}
+/* Funciones void*/
+
+void mostrarPila(struct NodoPila *ptrS){
+    
+    struct NodoPila *ptrActual;
+    
+    if (ptrS == NULL){
+        printf ("pila Vacia\n");
+        return;
+    }
+    ptrActual = ptrS;
+    printf("La Pila Actual es:\n");
+    while (ptrActual != NULL){
+        printf("%c =-=> ", ptrActual->dato);
+        ptrActual = ptrActual->ptrSiguiente;
+    }
+    printf("NULL\n");
+}
+
+
+void pop(struct NodoPila **ptrS){
+    struct NodoPila *prtTemp;
+    char valorEliminado;
+    prtTemp = *ptrS;
+    valorEliminado = (*ptrS)->dato;
+    *ptrS = (*ptrS)->ptrSiguiente;
+    free(prtTemp);
+
+}
+
+
+void push (struct NodoPila **ptrS){
+    struct NodoPila *ptrNuevo;
+    ptrNuevo = (struct NodoPila *)malloc(sizeof(struct NodoPila));
+    if(ptrNuevo != NULL){
+        printf("Escribe la letra\n");
+        scanf("%c", &ptrNuevo->dato);
+        fflush(stdin);
+        ptrNuevo->ptrSiguiente = *ptrS;
+        *ptrS = ptrNuevo;
+    }else{
+        printf("no se creo el nuevo dato\n");
+    }
+}
+
+ 
+void MENU(){			//ELABORADO: GIOVANNI CHAVES FLORES	
+	     	 do{
+	      		printf("\n--------------------Taquería El Primo-------------------------\n");
+	            printf("Bienvenido al menu de operaciones de polinomios, elige una opcion\n");
+				printf("\t(1) Push.\n");
+				printf("\t(2) Pop.\n");
+				printf("\t(3) Mostrar.\n");
+				printf("\t(4) Salir.\n");
+	            printf("------------------------------------------------------------\n");
+				
+				printf("\n\nOpcion: ");
+	            scanf("%d",&op);
+	
+	            switch(op)
+				{
+	               case 1:
+	                  	printf("------------------------------------------------------------\n");
+		  				printf("push");   
+						printf("\n------------------------------------------------------------\n");
+						push(&ptrHead);
+			 return;			
+	               case 2:
+	                    printf("------------------------------------------------------------\n");
+		  				printf("pop");   
+						printf("\n------------------------------------------------------------\n");   
+						pop(&ptrHead);	            
+					     	return;
+	               case 3:
+	                  	printf("------------------------------------------------------------\n");
+		  				printf("mostrar");   
+						printf("\n------------------------------------------------------------\n");  
+						ostrarPila(ptrHead);
+						return;
+					case 4:
+	    	            SALIR();
+		            break;  ;
+	                default:
+	                  printf("\n OPCIÓN INEXISTENTE, INTRODUCE UNA OPCION VALIDA\n");
+	                break;
+	            }
+	        }
+	 			while(op!=4);
+		}
