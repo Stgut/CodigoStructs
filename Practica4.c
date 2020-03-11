@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include<stdlib.h>
+struct tacos{
+    char nombre[25];
+    int inventario;
+    char queso[20];
+    char salsa[20];
+    char sabor[20];
+    struct tacos* sig;
+};
+struct tacos * push(struct tacos * top){
+    struct tacos * nuevo;
+    nuevo=(struct tacos *) malloc(sizeof(struct tacos));
+    printf("De que sera el taco?\n");
+    scanf(" %s",nuevo->nombre);
+    printf("Con queso?\n");
+    scanf("%s",&nuevo->queso);
+    printf("Cuantos tacos en la orden?\n");
+    scanf("%i",&nuevo->inventario);
+    printf("Salsa verde, roja o guacamole?\n");
+    scanf("%s",&nuevo->salsa);
+    printf("Sabor de boing?\n");
+    scanf(" %s",nuevo->sabor);
+    nuevo->sig=top;
+    top=nuevo;
+    return top;
+}
+struct tacos * pop(struct tacos *top){
+    struct tacos * actual;
+    actual=top;
+    top=top->sig;
+    free(actual);
+    return top;
+}
+void imprimir(struct tacos * top){
+    int i=1;
+    struct tacos * actual = top;
+    while (actual) {
+        printf("el nombre del pastel %i es:\n",i);
+        printf("%s\n",actual->nombre);
+        printf("Con o sin queso %i el taco numero:\n",i);
+        printf("%s\n",actual->queso);
+        printf("La cantidad de tacos en la orden %i es:\n",i);
+        printf("%i\n",actual->inventario);
+        printf("La salsa del taco %i es:\n",i);
+        printf("%s\n",actual->salsa);
+        printf("Sabor del Boing %i es:\n",i);
+        printf("%s\n",actual->sabor);
+        i++;
+        actual = actual->sig;
+    }
+}
+void librar(struct tacos * top){
+    struct tacos * actual;
+    while(top)
+    {
+       actual=top;
+       top=top->sig;
+       free(actual);
+    }
+}
+int main(){
+    int a=1;
+    char sipi[4];
+    struct tacos * top=NULL;
+    while(1){
+        printf("push o pop? (escribe salir para salir)\n");
+        scanf("%s",sipi);
+        if(sipi[1]=='u'){
+            top=push(top);
+            imprimir(top);
+        }
+        else if(sipi[1]=='o'){
+            if(top){
+                top=pop(top);
+                imprimir(top);
+            }
+            else{
+                printf("opcion invalida\n");
+            }
+        }
+        else{
+            break;
+        }
+    }
+    
+    librar(top);
+    return 0;
+}
