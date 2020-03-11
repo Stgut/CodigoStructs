@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+    struct tacos{ 
+    char name[25]; 
+    int precio; 
+    int inventario; 
+    char salsa[20];
+    char sabor[20]; 
+    }; 
+    
+    int n,i; 
+    void llenar(struct tacos arr[n]){ 
+        for(i=0;i<n;i++){ 
+        struct tacos thing; 
+        printf("Taco %d\n",i+1); 
+        printf("De que?\n"); 
+        scanf(" %s",thing.name); 
+        printf("Precio?\n"); 
+        scanf("%i",&thing.precio); 
+        printf("Cuantos tacos en la orden?\n"); 
+        scanf("%i",&thing.inventario); 
+        printf("Salsa verde o roja?\n"); 
+        scanf("%s",&thing.salsa); 
+        printf("Sabor de Boing\n"); 
+        scanf(" %s",thing.sabor); 
+        arr[i]=thing; 
+            }
+        } 
+        void imprimir(struct tacos arr[n]){ 
+        printf("////////////Esta es tu orden:////////////\n"); 
+        for(i=0;i<n;i++){ 
+        printf("----------------TACOS EL PRIMO----------------\n");
+        printf("Numero de orden:%d\n\n", i+1);
+        printf("%s\n",arr[i].name); 
+        printf("%i\n",arr[i].precio); 
+        printf("%i\n",arr[i].inventario); 
+        printf("%s\n",arr[i].salsa); 
+        printf("%s\n",arr[i].sabor); 
+            }
+            
+        } void imprimirUno(struct tacos arr[n]){ 
+        printf("Cual es el numero de orden que quieres imprimir?\n"); 
+        scanf("%i",&i); 
+        printf("%s\n",arr[i-1].name); 
+        printf("%i\n",arr[i-1].precio);
+        printf("%i\n",arr[i-1].inventario);
+        printf("%s\n",arr[i-1].salsa); 
+        printf("%s\n",arr[i-1].sabor); 
+        }
+        int main() { 
+        printf("----------------Bienvenido a tacos EL PRIMO---------------\n");
+        printf("----------------Ingrese su orden---------------\n");
+        scanf("%d",&n); 
+            struct tacos arr[n]; 
+            llenar(arr); 
+            imprimir(arr); 
+            imprimirUno(arr); 
+        return 0; 
+        
+        }
