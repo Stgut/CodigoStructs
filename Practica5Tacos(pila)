@@ -36,7 +36,7 @@ void imprimir(struct tacos * top){
     int i=1;
     struct tacos * actual = top;
     while (actual) {
-        printf("el nombre del pastel %i es:\n",i);
+        printf("el nombre del taco %i es:\n",i);
         printf("%s\n",actual->nombre);
         printf("Con o sin queso %i el taco numero:\n",i);
         printf("%s\n",actual->queso);
